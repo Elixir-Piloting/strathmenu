@@ -8,6 +8,7 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { useMenuItemCount } from "@/hooks/use-menu";
 
 interface FilterState {
   category: string;
@@ -18,16 +19,19 @@ interface FilterState {
 export default function MenuPage() {
   const [filters, setFilters] = useState<FilterState>({ category: "", day: "", location: "" });
   const [search, setSearch] = useState("");
+  const { data: count } = useMenuItemCount();
 
   return (
     <div className="flex flex-col flex-1 relative">
-      <header className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+      <header className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container max-w-5xl mx-auto px-4 py-4">
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-2xl font-bold">StrathMenu</h1>
-                <p className="text-sm text-muted-foreground">Student-powered cafeteria menu</p>
+                <p className="text-sm text-muted-foreground">
+                  {count !== undefined ? `${count} items` : "Student-powered cafeteria menu"}
+                </p>
               </div>
               <AddItemDialog
                 trigger={

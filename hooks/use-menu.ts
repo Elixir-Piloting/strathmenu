@@ -26,6 +26,19 @@ export function useMenuItems(filters: FilterParams = {}) {
   });
 }
 
+export function useMenuItemCount() {
+  return useQuery({
+    queryKey: ["menu-item-count"],
+    queryFn: async () => {
+      const res = await fetch("/api/menu-items");
+      if (!res.ok) throw new Error("Failed to fetch menu items");
+      const items = (await res.json()) as MenuItemWithCategory[];
+      return items.length;
+    },
+    staleTime: 30 * 1000,
+  });
+}
+
 export function useCategories(searchQuery: string) {
   return useQuery({
     queryKey: ["categories", searchQuery],

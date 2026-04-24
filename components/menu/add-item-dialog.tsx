@@ -126,7 +126,7 @@ export function AddItemDialog({ trigger }: AddItemDialogProps) {
           type="number"
           step="0.01"
           min="0"
-          placeholder="e.g., 3.50"
+          placeholder="e.g., 150"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           required

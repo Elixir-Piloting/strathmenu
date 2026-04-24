@@ -1,9 +1,25 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+const SEED_CATEGORIES = [
+  "Meals",
+  "Breakfast",
+  "Beverages",
+  "Snacks",
+  "Sides",
+];
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const query = searchParams.get("q") || "";
+
+  for (const name of SEED_CATEGORIES) {
+    await prisma.category.upsert({
+      where: { name },
+      update: {},
+      create: { name },
+    });
+  }
 
   const categories = await prisma.category.findMany({
     where: query
