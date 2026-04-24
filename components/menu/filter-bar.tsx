@@ -38,7 +38,7 @@ export function FilterBar({ filters, onFiltersChange }: FilterBarProps) {
     <div className="flex flex-wrap gap-2 items-center">
       <Popover open={openCategory} onOpenChange={setOpenCategory}>
         <PopoverTrigger asChild>
-          <Button variant="outline" size="sm" className="h-8">
+          <Button variant="outline" size="sm" className="h-8 rounded-full">
             Category
             {filters.category && (
               <Badge variant="secondary" className="ml-1 h-4 px-1.5 text-xs">
@@ -87,7 +87,7 @@ export function FilterBar({ filters, onFiltersChange }: FilterBarProps) {
 
       <Popover open={openLocation} onOpenChange={setOpenLocation}>
         <PopoverTrigger asChild>
-          <Button variant="outline" size="sm" className="h-8">
+          <Button variant="outline" size="sm" className="h-8 rounded-full">
             Location
             {filters.location && (
               <Badge variant="secondary" className="ml-1 h-4 px-1.5 text-xs">
@@ -119,7 +119,7 @@ export function FilterBar({ filters, onFiltersChange }: FilterBarProps) {
 
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline" size="sm" className="h-8">
+          <Button variant="outline" size="sm" className="h-8 rounded-full">
             Day
             {filters.day && (
               <Badge variant="secondary" className="ml-1 h-4 px-1.5 text-xs">
@@ -152,7 +152,7 @@ export function FilterBar({ filters, onFiltersChange }: FilterBarProps) {
         <Button
           variant="ghost"
           size="sm"
-          className="h-8 text-muted-foreground"
+          className="h-8 text-muted-foreground rounded-full"
           onClick={clearFilters}
         >
           <X className="h-4 w-4" />

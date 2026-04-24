@@ -35,7 +35,7 @@ export default function MenuPage() {
               </div>
               <AddItemDialog
                 trigger={
-                  <Button className="hidden sm:flex">
+                  <Button className="hidden sm:flex rounded-full">
                     <Plus className="h-4 w-4" />
                     Add Item
                   </Button>

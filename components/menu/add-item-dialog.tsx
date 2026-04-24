@@ -140,7 +140,7 @@ export function AddItemDialog({ trigger }: AddItemDialogProps) {
             <Button
               variant="outline"
               role="combobox"
-              className="w-full justify-between font-normal"
+              className="w-full justify-between font-normal rounded-full"
             >
               {category || "Select or create category"}
             </Button>
@@ -328,7 +328,7 @@ export function AddItemDialog({ trigger }: AddItemDialogProps) {
           <DrawerHeader>
             <DrawerTitle>Add Menu Item</DrawerTitle>
           </DrawerHeader>
-          <div className="overflow-y-auto max-h-[calc(100vh-8rem)] pb-8 px-4">
+          <div className="overflow-y-auto max-h-[calc(100vh-8rem)] pb-8 px-1">
             {formContent}
           </div>
         </DrawerContent>
