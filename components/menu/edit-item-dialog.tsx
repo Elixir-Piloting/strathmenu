@@ -328,11 +328,11 @@ export function EditItemDialog({ item, trigger }: EditItemDialogProps) {
     return (
       <Drawer open={open} onOpenChange={setOpen}>
         <DrawerTrigger asChild>{trigger}</DrawerTrigger>
-        <DrawerContent>
+        <DrawerContent className="p-4">
           <DrawerHeader>
             <DrawerTitle>Edit Menu Item</DrawerTitle>
           </DrawerHeader>
-          <div className="overflow-y-auto max-h-[calc(100vh-8rem)] pb-8">
+          <div className="overflow-y-auto max-h-[calc(100vh-8rem)] pb-8 px-4">
             {formContent}
           </div>
         </DrawerContent>
