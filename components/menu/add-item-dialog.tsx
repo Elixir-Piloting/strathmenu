@@ -28,7 +28,7 @@ import {
   CommandInput,
   CommandItem,
 } from "@/components/ui/command";
-import { Plus, Loader2 } from "lucide-react";
+import { Plus, Spinner } from "@/components/ui/icons";
 
 const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const MEAL_PERIODS = ["Breakfast", "Lunch", "Dinner", "Snacks"];
@@ -314,7 +314,7 @@ export function AddItemDialog({ trigger }: AddItemDialogProps) {
       </div>
 
       <Button type="submit" disabled={createItem.isPending} className="w-full">
-        {createItem.isPending && <Loader2 className="h-4 w-4 animate-spin" />}
+        {createItem.isPending && <Spinner className="h-4 w-4 animate-spin" />}
         Add Item
       </Button>
     </form>

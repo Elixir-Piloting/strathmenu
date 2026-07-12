@@ -29,7 +29,7 @@ import {
   CommandInput,
   CommandItem,
 } from "@/components/ui/command";
-import { Pencil, Loader2 } from "lucide-react";
+import { Pencil, Spinner } from "@/components/ui/icons";
 
 const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const MEAL_PERIODS = ["Breakfast", "Lunch", "Dinner", "Snacks"];
@@ -318,7 +318,7 @@ export function EditItemDialog({ item, trigger }: EditItemDialogProps) {
       </div>
 
       <Button type="submit" disabled={updateItem.isPending} className="w-full">
-        {updateItem.isPending && <Loader2 className="h-4 w-4 animate-spin" />}
+        {updateItem.isPending && <Spinner className="h-4 w-4 animate-spin" />}
         Save Changes
       </Button>
     </form>

@@ -4,11 +4,11 @@ import { useState } from "react";
 import { MenuItemList } from "@/components/menu/menu-item-list";
 import { FilterBar } from "@/components/menu/filter-bar";
 import { AddItemDialog } from "@/components/menu/add-item-dialog";
-import { Search } from "lucide-react";
+import { MagnifyingGlass, Plus } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import { useMenuItemCount } from "@/hooks/use-menu";
+import { CartPanel } from "@/components/cart/cart-panel";
 
 interface FilterState {
   category: string;
@@ -28,11 +28,16 @@ export default function MenuPage() {
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-bold">StrathMenu</h1>
+                <h1 className="text-2xl font-bold flex items-center gap-2">
+                  <img src="/favicon.svg" alt="" className="h-7 w-7" />
+                  StrathMenu
+                </h1>
                 <p className="text-sm text-muted-foreground">
                   {count !== undefined ? `${count} items` : "Student-powered cafeteria menu"}
                 </p>
               </div>
+              <div className="flex items-center gap-2">
+                <CartPanel />
               <AddItemDialog
                 trigger={
                   <Button className="hidden sm:flex rounded-full">
@@ -41,11 +46,12 @@ export default function MenuPage() {
                   </Button>
                 }
               />
+              </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <MagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search menu..."
                   value={search}

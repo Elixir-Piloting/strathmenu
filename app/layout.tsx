@@ -20,8 +20,12 @@ const interHeading = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "StrathMenu - Student Menu",
+  title: "StrathMenu",
   description: "Crowdsourced cafeteria menu",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -30,10 +34,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${geistMono.variable} ${interHeading.variable} h-full antialiased`}
-    >
+      <html
+        lang="en"
+        className={`${inter.variable} ${geistMono.variable} ${interHeading.variable} h-full antialiased`}
+        suppressHydrationWarning
+      >
       <body className="min-h-full flex flex-col">
         <Providers>{children}</Providers>
       </body>

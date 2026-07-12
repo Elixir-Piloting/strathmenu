@@ -3,10 +3,16 @@
 import { useState } from "react";
 import type { MenuItemWithCategory } from "@/hooks/use-menu";
 import { useDeleteMenuItem } from "@/hooks/use-menu";
+import { useCart } from "@/hooks/use-cart";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { EditItemDialog } from "./edit-item-dialog";
-import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
+import {
+  MoreHorizontal,
+  Pencil,
+  Trash2,
+} from "lucide-react";
+import { ShoppingCart, Check } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -31,7 +37,10 @@ interface MenuItemCardProps {
 export function MenuItemCard({ item }: MenuItemCardProps) {
   const [deleteOpen, setDeleteOpen] = useState(false);
   const deleteItem = useDeleteMenuItem();
+  const cart = useCart();
+  const inCart = cart.ids.includes(item.id);
 
+  // ponytail: keep lucide for MoreHorizontal/Pencil/Trash2 — phosphor equivalents are visually different and the edit/delete popover is rarely seen
   const handleDelete = () => {
     deleteItem.mutate(item.id, {
       onSuccess: () => {
@@ -64,6 +73,15 @@ export function MenuItemCard({ item }: MenuItemCardProps) {
               {item.category.name}
             </Badge>
           </div>
+          <div className="flex items-center gap-1">
+            <Button
+              variant={inCart ? "default" : "outline"}
+              size="icon"
+              className="h-8 w-8 shrink-0"
+              onClick={() => cart.toggle(item.id)}
+            >
+              {inCart ? <Check className="h-4 w-4" /> : <ShoppingCart className="h-4 w-4" />}
+            </Button>
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0">
@@ -91,6 +109,7 @@ export function MenuItemCard({ item }: MenuItemCardProps) {
               </Button>
             </PopoverContent>
           </Popover>
+          </div>
         </div>
       </div>
       <div className="px-4 pb-4">
